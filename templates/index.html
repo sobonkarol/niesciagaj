@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nie sciągaj...</title>
+    <!-- Czcionka Poppins z Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Ustawienia globalne dla całej strony */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1c1c1e; /* Ciemny motyw */
+            color: #f2f2f7; /* Jasna czcionka */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 1.8rem; /* Mniejszy rozmiar czcionki */
+            font-weight: 400;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #2c2c2e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            font-weight: 400;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3c;
+            background-color: #3a3a3c;
+            color: #f2f2f7;
+            font-size: 1rem;
+        }
+
+        input[type="text"]::placeholder {
+            color: #a1a1a3;
+        }
+
+        button {
+            background-color: #007aff;
+            color: #f2f2f7;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <form action="/download" method="POST">
+        <label for="tweet_url">Podaj URL tweeta:</label>
+        <input type="text" id="tweet_url" name="tweet_url" placeholder="https://x.com/..." required>
+
+        <label for="file_name">Wpisz swoją nazwę pliku (opcjonalnie):</label>
+        <input type="text" id="file_name" name="file_name" placeholder="Twoja nazwa filmu..">
+
+        <button type="submit">Pobierz film</button>
+    </form>
+</body>
+</html>
