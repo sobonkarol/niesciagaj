@@ -76,14 +76,13 @@
     </style>
 </head>
 <body>
-    <form action="/download" method="POST">
-        <label for="tweet_url">Podaj URL tweeta:</label>
-        <input type="text" id="tweet_url" name="tweet_url" placeholder="https://x.com/..." required>
+<form action="/download" method="POST">
+    <label for="tweet_url">Podaj URL tweeta:</label>
+    <input type="text" id="tweet_url" name="tweet_url" placeholder="https://x.com/..." required>
+    <label for="file_name">Nazwa pliku (opcjonalnie):</label>
+    <input type="text" id="file_name" name="file_name" placeholder="Twoja nazwa">
+    <button type="submit">Pobierz film</button>
+</form>
 
-        <label for="file_name">Wpisz swoją nazwę pliku (opcjonalnie):</label>
-        <input type="text" id="file_name" name="file_name" placeholder="Twoja nazwa filmu..">
-
-        <button type="submit">Pobierz film</button>
-    </form>
 </body>
 </html>

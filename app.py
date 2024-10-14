@@ -10,11 +10,11 @@ DOWNLOAD_FOLDER = "downloads"
 if not os.path.exists(DOWNLOAD_FOLDER):
     os.makedirs(DOWNLOAD_FOLDER)
 
-@app.route('/')
+@app.route('/', methods=['GET'])  # Upewnij się, że metoda GET jest obsługiwana
 def index():
     return render_template('index.html')
 
-@app.route('/download', methods=['POST'])
+@app.route('/download', methods=['POST'])  # Endpoint obsługujący POST
 def download_video():
     tweet_url = request.form['tweet_url']
     custom_file_name = request.form.get('file_name')
@@ -27,14 +27,15 @@ def download_video():
     try:
         ydl_opts = {
             'outtmpl': os.path.join(DOWNLOAD_FOLDER, f'{custom_file_name}.%(ext)s'),
-            'format': 'bestvideo+bestaudio/best',
+            'format': 'bestvideo+bestaudio/best',  # Pobiera najlepszy format
         }
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(tweet_url, download=True)
             video_file = ydl.prepare_filename(info_dict)
 
-        return send_file(video_file, as_attachment=True)
+        # Zwrócenie pliku do użytkownika, z wyraźnym określeniem nazwy pliku
+        return send_file(video_file, as_attachment=True, download_name=f'{custom_file_name}.mp4')
 
     except Exception as e:
         return f"Błąd pobierania: {str(e)}"
